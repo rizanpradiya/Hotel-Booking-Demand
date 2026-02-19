@@ -5,7 +5,7 @@ import joblib
 # LOAD MODEL
 @st.cache_resource
 def load_model():
-    return joblib.load("Hotel-Booking-Demand/hotel_cancellation_model.pkl")
+    return joblib.load("Model/model_hotel_booking.pkl")
 
 st.set_page_config(page_title="Hotel Cancellation Risk", page_icon="🏨")
 
@@ -167,5 +167,6 @@ if st.button("🔍 Predict Cancellation Risk"):
 
     except Exception as e:
         st.error(f"Prediction error: {e}")
+
 
 
