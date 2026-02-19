@@ -1,16 +1,11 @@
 import streamlit as st
 import pandas as pd
 import joblib
-import os
-import pickle
 
 # LOAD MODEL
-
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "hotel_cancellation_model.pkl")
-
-with open(MODEL_PATH, "rb") as f:
-    model = pickle.load(f)
-
+@st.cache_resource
+def load_model():
+    return joblib.load("hotel_cancellation_model.pkl")
 
 st.set_page_config(page_title="Hotel Cancellation Risk", page_icon="🏨")
 
@@ -172,4 +167,3 @@ if st.button("🔍 Predict Cancellation Risk"):
 
     except Exception as e:
         st.error(f"Prediction error: {e}")
-
